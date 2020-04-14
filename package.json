@@ -4,8 +4,27 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build tsconfig.json",
+    "test": "mocha --recursive release/**/*Test*.js && npm run lint",
+    "build-test": "npm run build && npm run test",
+    "test-withreport": "mocha --recursive release/**/*Test*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./testresults/test-results.xml",
+    "lint": "tslint -p tsconfig.json -t stylish",
+    "copy-package": "copyfiles package.json ./release/",
+    "package": "npm run copy-package && npm pack ./release"
   },
   "author": "Eric Maino",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^13.11.1",
+    "express": "^4.17.1",
+    "meeteric-ts": "^0.2.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^7.0.2",
+    "mocha": "^7.1.1",
+    "tslint": "^5.20.1",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typescript": "^3.8.3"
+  }
 }
