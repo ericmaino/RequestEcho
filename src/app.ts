@@ -15,8 +15,8 @@ class ExpressApp {
             res.status(200).send({ health: "Ok" });
         });
 
-        this.app.get('/', async (req, res) => {
-            const keyName = req.query['key-name'];
+        this.app.get('/:key', async (req, res) => {
+            const keyName = req.params.key;
             if (!keyName || !req.headers[keyName]) {
                 res.status(401).send();
                 return;
