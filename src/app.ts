@@ -17,11 +17,6 @@ class ExpressApp {
 
         this.app.get('/:key', async (req, res) => {
             const keyName = req.params.key;
-            if (!keyName || !req.headers[keyName]) {
-                res.status(401).send();
-                return;
-            }
-
             const result = {};
 
             Object.keys(req.headers).forEach(key => {
@@ -31,6 +26,11 @@ class ExpressApp {
             Object.keys(req.query).forEach(key => {
                 result[key] = req.query[key];
             });
+
+            if (!keyName || !result[keyName]) {
+                res.status(401).send();
+                return;
+            }
 
             res
                 .set({
