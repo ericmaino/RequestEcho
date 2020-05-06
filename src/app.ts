@@ -61,7 +61,7 @@ class ExpressApp {
                         res
                           .set(
                                 {
-                                      'www-authenticate': 'Bearer authorization_uri=https://login.microsoftonline.com/5ed6c90c-d2d3-4f71-8a51-b595acd4407c/oauth2/authorize?client_id=770476af-adf3-400d-8476-a98fb89f1405&response_mode=fragment&response_type=code+id_token&redirect_uri=https%3A%2F%2Flocalhost%3A3111%2Ftesting%2Fauthorize&scope=openid&nonce=12345'
+                                      'www-authenticate': 'Bearer authorization_uri=https://login.microsoftonline.com/5ed6c90c-d2d3-4f71-8a51-b595acd4407c/oauth2/authorize'
                                 }
                             )
                             .status(401).send();
